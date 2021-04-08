@@ -57,10 +57,11 @@ GLOBAL_VAR_INIT(ert_request_answered, FALSE)
 
 	return 1
 
-/proc/trigger_armed_response_team(datum/response_team/response_team_type, commander_slots, security_slots, medical_slots, engineering_slots, janitor_slots, paranormal_slots, cyborg_slots)
+/proc/trigger_armed_response_team(datum/response_team/response_team_type, commander_slots, security_slots, medical_slots, engineering_slots, janitor_slots, paranormal_slots, cyborg_slots, nuke_code)
 	GLOB.response_team_members = list()
 	GLOB.active_team = response_team_type
 	GLOB.active_team.setSlots(commander_slots, security_slots, medical_slots, engineering_slots, janitor_slots, paranormal_slots, cyborg_slots)
+	GLOB.active_team.nuke_code = nuke_code
 
 	GLOB.send_emergency_team = TRUE
 	var/list/ert_candidates = shuffle(SSghost_spawns.poll_candidates("Join the Emergency Response Team?",, GLOB.responseteam_age, 60 SECONDS, TRUE, GLOB.role_playtime_requirements[ROLE_ERT]))
@@ -185,6 +186,11 @@ GLOBAL_VAR_INIT(ert_request_answered, FALSE)
 
 	SSjobs.CreateMoneyAccount(M, role, null)
 
+	if(GLOB.active_team.nuke_code)
+		var/nanotrasen_nukes = get_nukes_with_codes(station_z_only = FALSE, NT_nukes = TRUE, syndicate_nukes = FALSE)
+		for(var/obj/machinery/nuclearbomb/bomb in nanotrasen_nukes)
+			M.mind.store_memory("Nanotrasen [bomb.name] code is: [bomb.r_code]")
+
 	GLOB.active_team.equip_officer(role, M)
 
 	return M
@@ -209,6 +215,7 @@ GLOBAL_VAR_INIT(ert_request_answered, FALSE)
 	var/janitor_outfit
 	var/paranormal_outfit
 	var/borg_path = /mob/living/silicon/robot/ert
+	var/nuke_code
 
 /datum/response_team/proc/setSlots(com=1, sec=4, med=0, eng=0, jan=0, par=0, cyb=0)
 	slots["Commander"] = com
