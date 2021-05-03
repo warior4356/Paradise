@@ -48,7 +48,7 @@
 	. = TRUE
 	switch(action)
 		if("ert_type")
-			if(params["ert_type"] == "Epslion")
+			if(params["ert_type"] == "Epsilon")
 				engineering_slots = 0
 				janitor_slots = 0
 				paranormal_slots = 0
@@ -86,6 +86,8 @@
 					D = new /datum/response_team/red
 				if("Gamma")
 					D = new /datum/response_team/gamma
+				if("Epsilon")
+					D = new /datum/response_team/epsilon
 				else
 					to_chat(usr, "<span class='userdanger'>Invalid ERT type.</span>")
 					return

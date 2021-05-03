@@ -308,6 +308,19 @@ GLOBAL_VAR_INIT(ert_request_answered, FALSE)
 /datum/response_team/gamma/announce_team()
 	GLOB.event_announcement.Announce("Attention, [station_name()]. We are sending a code GAMMA elite Emergency Response Team. Standby.", "ERT En-Route")
 
+// -- EPSILON TEAM --
+
+/datum/response_team/epsilon
+	security_outfit = /datum/outfit/job/centcom/response_team/death_commando
+	command_outfit = /datum/outfit/job/centcom/response_team/death_commando/commander
+	borg_path = /mob/living/silicon/robot/deathsquad/
+
+/datum/response_team/epsilon/cannot_send_team()
+	return // Death waits. The pale rider does not announce its presence
+
+/datum/response_team/epsilon/announce_team()
+	return // Death comes. The pale rider does not announce its presence
+
 /datum/outfit/job/centcom/response_team
 	name = "Response team"
 	var/rt_assignment = "Emergency Response Team Member"

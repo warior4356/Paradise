@@ -142,7 +142,7 @@
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	mask = /obj/item/clothing/mask/gas/sechailer
 
-	r_hand = /obj/item/gun/energy/laser
+	l_hand = /obj/item/gun/energy/laser
 
 	backpack_contents = list(
 		/obj/item/clothing/head/helmet/ert/security = 1,
@@ -161,7 +161,7 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	mask = /obj/item/clothing/mask/gas/sechailer
 
-	r_hand = /obj/item/gun/projectile/automatic/lasercarbine
+	l_hand = /obj/item/gun/projectile/automatic/lasercarbine
 
 	cybernetic_implants = list(
 		/obj/item/organ/internal/cyberimp/arm/flash,
@@ -192,7 +192,7 @@
 	l_pocket = /obj/item/restraints/legcuffs/bola/energy
 	r_pocket = /obj/item/extinguisher/mini
 
-	r_hand = /obj/item/gun/energy/immolator/multi
+	l_hand = /obj/item/gun/energy/immolator/multi
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs = 1,
@@ -507,7 +507,7 @@
 	head = /obj/item/clothing/head/helmet/ert/janitor
 	glasses = /obj/item/clothing/glasses/sunglasses
 
-	r_hand = /obj/item/gun/energy/disabler
+	l_hand = /obj/item/gun/energy/disabler
 
 	cybernetic_implants = list(
 		/obj/item/organ/internal/cyberimp/arm/advmop)

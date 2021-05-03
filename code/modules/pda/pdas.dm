@@ -102,7 +102,6 @@
 /obj/item/pda/heads/ert/medical
 	icon_state = "pda-medical"
 
-
 /obj/item/pda/cargo
 	default_cartridge = /obj/item/cartridge/quartermaster
 	icon_state = "pda-cargo"
@@ -180,6 +179,9 @@
 	var/datum/data/pda/app/messenger/M = find_program(/datum/data/pda/app/messenger)
 	if(M)
 		M.m_hidden = 1
+
+/obj/item/pda/centcom/death_commando
+	icon_state = "pda-bartender"
 
 //Some spare PDAs in a box
 /obj/item/storage/box/PDAs
