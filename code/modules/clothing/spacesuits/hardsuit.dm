@@ -715,8 +715,9 @@
 /obj/item/clothing/head/helmet/space/hardsuit/deathsquad
 	name = "deathsquad helmet"
 	desc = "That's not red paint. That's real blood."
-	icon_state = "deathsquad"
+	icon_state = "hardsuit0-deathsquad"
 	item_state = "deathsquad"
+	item_color = "deathsquad"
 	armor = list("melee" = 80, "bullet" = 80, "laser" = 50, "energy" = 50, "bomb" = 100, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100)
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF | ACID_PROOF
@@ -725,6 +726,9 @@
 	see_in_dark = 8
 	HUDType = MEDHUD
 	strip_delay = 130
+
+	sprite_sheets = list()
+	sprite_sheets_obj = list()
 
 /obj/item/clothing/suit/space/hardsuit/deathsquad
 	name = "deathsquad suit"
@@ -739,6 +743,9 @@
 	dog_fashion = /datum/dog_fashion/back/deathsquad
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/deathsquad
 	jetpack = /obj/item/tank/jetpack/suit
+
+	sprite_sheets = list()
+	sprite_sheets_obj = list()
 
 /obj/item/clothing/head/helmet/space/hardsuit/deathsquad/beret
 	name = "officer beret"
