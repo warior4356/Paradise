@@ -93,6 +93,10 @@
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
+/obj/item/clothing/under/rank/centcom_officer/binary
+	sensor_mode = SENSOR_LIVING
+	random_sensor = FALSE
+
 /obj/item/clothing/under/rank/centcom_commander
 	name = "\improper CentComm commander's jumpsuit"
 	desc = "It's a jumpsuit worn by CentComm's highest-tier Commanders."

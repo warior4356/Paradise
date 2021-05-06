@@ -238,74 +238,6 @@ export const ERTManager = (props, context) => {
         </LabeledList>
       );
       break;
-
-    case "Knight":
-      bodyBlock = (
-        <LabeledList>
-          <LabeledList.Item label="Knight Commander">
-            <Button
-              content={data.com > 0 ? "Yes" : "No"}
-              selected={data.com > 0}
-              onClick={() => act('toggle_com')} />
-          </LabeledList.Item>
-          <LabeledList.Item label="Paladin">
-            {slotOptions.map((a, i) => (
-              <Button
-                key={"sec" + a}
-                selected={data.sec === a}
-                content={a}
-                onClick={() => act('set_sec', {
-                  set_sec: a,
-                })}
-              />
-            ))}
-          </LabeledList.Item>
-          <LabeledList.Item label="Restorer">
-            {slotOptions.map((a, i) => (
-              <Button
-                key={"med" + a}
-                selected={data.med === a}
-                content={a}
-                onClick={() => act('set_med', {
-                  set_med: a,
-                })}
-              />
-            ))}
-          </LabeledList.Item>
-          <LabeledList.Item label="Inquisitor">
-            {slotOptions.map((a, i) => (
-              <Button
-                key={"par" + a}
-                selected={data.par === a}
-                content={a}
-                onClick={() => act('set_par', {
-                  set_par: a,
-                })}
-              />
-            ))}
-          </LabeledList.Item>
-          <LabeledList.Item label="Total Slots">
-            <Box color={data.total > data.spawnpoints
-              ? "red"
-              : "green"}>
-              {data.total} total, versus {data.spawnpoints} spawnpoints
-            </Box>
-          </LabeledList.Item>
-          <LabeledList.Item label="Nuke Code">
-            <Button
-              content={data.nuke_code > 0 ? "Yes" : "No"}
-              selected={data.nuke_code}
-              onClick={() => act('toggle_nuke_code')} />
-          </LabeledList.Item>
-          <LabeledList.Item label="Dispatch">
-            <Button
-              icon="ambulance"
-              content="Send Team"
-              onClick={() => act('dispatch_ert')} />
-          </LabeledList.Item>
-        </LabeledList>
-      );
-      break;
   }
 
   return (
@@ -348,12 +280,6 @@ export const ERTManager = (props, context) => {
                   ? "blue"
                   : ""}
                 onClick={() => act('ert_type', { ert_type: "Sol Gov" })} />
-              <Button
-                content="Knight"
-                color={data.ert_type === "Knight"
-                  ? "yellow"
-                  : ""}
-                onClick={() => act('ert_type', { ert_type: "Knight" })} />
             </LabeledList.Item>
           </LabeledList>
         </Section>

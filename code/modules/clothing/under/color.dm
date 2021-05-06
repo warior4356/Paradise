@@ -18,7 +18,7 @@
 	item_color = "black"
 	resistance_flags = NONE
 
-/obj/item/clothing/under/color/black/sensor // For Death Squad
+/obj/item/clothing/under/color/black/binary // For Death Squad
 	sensor_mode = SENSOR_LIVING
 	random_sensor = FALSE
 

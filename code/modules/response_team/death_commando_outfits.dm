@@ -9,7 +9,7 @@
 	id = /obj/item/card/id/death_commando
 	l_ear = /obj/item/radio/headset/ert/alt
 	box = /obj/item/storage/box/responseteam
-	uniform = /obj/item/clothing/under/color/black/sensor
+	uniform = /obj/item/clothing/under/color/black/binary
 	shoes = /obj/item/clothing/shoes/magboots/advance
 	gloves = /obj/item/clothing/gloves/combat
 	suit = /obj/item/clothing/suit/space/hardsuit/deathsquad
@@ -24,7 +24,7 @@
 
 	backpack_contents = list(
 		/obj/item/storage/box/flashbangs = 1,
-		/obj/item/storage/lockbox/t4 = 1,
+		/obj/item/storage/box/breaching = 1,
 		/obj/item/pinpointer = 1,
 		/obj/item/gun/projectile/revolver/mateba = 1,
 		/obj/item/ammo_box/a357 = 2,
@@ -56,7 +56,7 @@
 	rt_assignment = "Deathsquad Officer"
 	rt_job = "Deathsquad Officer"
 	rt_mob_job = "Deathsquad Officer"
-	uniform = /obj/item/clothing/under/rank/centcom_officer/sensor
+	uniform = /obj/item/clothing/under/rank/centcom_officer/binary
 	r_hand = /obj/item/disk/nuclear/unrestricted
 
 /datum/outfit/job/centcom/death_commando/commander/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)

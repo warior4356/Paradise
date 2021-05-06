@@ -255,6 +255,28 @@
 	for(var/I in 1 to 5)
 		new /obj/item/grenade/empgrenade(src)
 
+/obj/item/storage/box/explosives
+	name = "combat grenades"
+	desc = "A standard issue sol gov box of tactical grenades."
+	icon_state = "flashbang"
+
+/obj/item/storage/box/explosives/populate_contents()
+	new /obj/item/grenade/syndieminibomb/generic(src)
+	new /obj/item/grenade/syndieminibomb/generic(src)
+	new /obj/item/grenade/gas/plasma(src)
+	new /obj/item/grenade/gas/plasma(src)
+	new /obj/item/grenade/empgrenade(src)
+	new /obj/item/grenade/empgrenade(src)
+	new /obj/item/grenade/frag(src)
+
+/obj/item/storage/box/breaching
+	name = "breaching charges"
+	desc = "Contains three T4 thermal breaching charges."
+	icon_state = "flashbang"
+
+/obj/item/storage/box/breaching/populate_contents()
+	for(var/i in 0 to 2)
+		new /obj/item/grenade/plastic/x4/thermite(src)
 
 /obj/item/storage/box/trackimp
 	name = "tracking implant kit"
@@ -879,6 +901,15 @@
 	name = "magical box"
 	desc = "It's just an ordinary magical box."
 	icon_state = "box_wizard"
+
+/obj/item/storage/box/mindshield
+	name = "boxed mindshield kit"
+	desc = "Contains everything needed to secure the minds of those around you."
+
+/obj/item/storage/box/mindshield/populate_contents()
+	for(var/I in 1 to 3)
+		new /obj/item/implantcase/mindshield(src)
+	new /obj/item/implanter/mindshield(src)
 
 #undef NODESIGN
 #undef NANOTRASEN

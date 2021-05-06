@@ -321,6 +321,18 @@ GLOBAL_VAR_INIT(ert_request_answered, FALSE)
 /datum/response_team/epsilon/announce_team()
 	return // Death comes. The pale rider does not announce its presence
 
+// -- Sol Gov --
+
+/datum/response_team/sol_gov
+	engineering_outfit = /datum/outfit/job/centcom/response_team/sol_gov/engineer
+	security_outfit = /datum/outfit/job/centcom/response_team/sol_gov
+	medical_outfit = /datum/outfit/job/centcom/response_team/sol_gov/medic
+	command_outfit = /datum/outfit/job/centcom/response_team/sol_gov/lieutenant
+
+/datum/response_team/sol_gov/announce_team()
+	GLOB.event_announcement.Announce("Attention, [station_name()]. A Solar Federation Marine squad is being sent to help. Standby.", "Sol Gov En-Route")
+
+
 /datum/outfit/job/centcom/response_team
 	name = "Response team"
 	var/rt_assignment = "Emergency Response Team Member"

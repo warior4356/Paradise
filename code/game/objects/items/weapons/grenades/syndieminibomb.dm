@@ -10,3 +10,8 @@
 	update_mob()
 	explosion(loc, 1, 2, 4, flame_range = 2)
 	qdel(src)
+
+/obj/item/grenade/syndieminibomb/generic
+	desc = "A high explosive grenade of unknown manufacture"
+	name = "HE grenade"
+	origin_tech = "materials=3;magnets=4"

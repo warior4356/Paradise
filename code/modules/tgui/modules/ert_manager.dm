@@ -52,14 +52,14 @@
 				engineering_slots = 0
 				janitor_slots = 0
 				paranormal_slots = 0
+				nuke_code = TRUE
 			else if(params["ert_type"] == "Sol Gov")
 				janitor_slots = 0
 				paranormal_slots = 0
 				cyborg_slots = 0
-			else if(params["ert_type"] == "Knight")
-				janitor_slots = 0
-				engineering_slots = 0
-				cyborg_slots = 0
+				nuke_code = FALSE
+			else
+				nuke_code = FALSE
 			ert_type = params["ert_type"]
 		if("toggle_com")
 			commander_slots = commander_slots ? 0 : 1
@@ -88,6 +88,8 @@
 					D = new /datum/response_team/gamma
 				if("Epsilon")
 					D = new /datum/response_team/epsilon
+				if("Sol Gov")
+					D = new /datum/response_team/sol_gov
 				else
 					to_chat(usr, "<span class='userdanger'>Invalid ERT type.</span>")
 					return
@@ -111,7 +113,8 @@
 			notify_ghosts("An ERT is being dispatched. Open positions: [slot_text]")
 			message_admins("[key_name_admin(usr)] dispatched a [ert_type] ERT. Slots: [slot_text]", 1)
 			log_admin("[key_name(usr)] dispatched a [ert_type] ERT. Slots: [slot_text]")
-			GLOB.event_announcement.Announce("Attention, [station_name()]. We are attempting to assemble an ERT. Standby.", "ERT Protocol Activated")
+			if(ert_type != "Epsilon")
+				GLOB.event_announcement.Announce("Attention, [station_name()]. We are attempting to assemble an ERT. Standby.", "ERT Protocol Activated")
 			trigger_armed_response_team(D, commander_slots, security_slots, medical_slots, engineering_slots, janitor_slots, paranormal_slots, cyborg_slots, nuke_code)
 		else
 			return FALSE
