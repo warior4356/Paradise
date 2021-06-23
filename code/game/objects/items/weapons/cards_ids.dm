@@ -819,10 +819,6 @@
 	name = "Death Commando ID"
 	icon_state = "deathsquad"
 
-/obj/item/card/id/sol_gov
-	name = "Sol Gov Military ID Card"
-	icon_state = "lifetimeid"
-
 /obj/item/card/id/golem
 	name = "Free Golem ID"
 	desc = "A card used to claim mining points and buy gear. Use it to mark it as yours."

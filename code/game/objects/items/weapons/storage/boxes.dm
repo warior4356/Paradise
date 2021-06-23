@@ -255,20 +255,6 @@
 	for(var/I in 1 to 5)
 		new /obj/item/grenade/empgrenade(src)
 
-/obj/item/storage/box/explosives
-	name = "combat grenades"
-	desc = "A standard issue sol gov box of tactical grenades."
-	icon_state = "flashbang"
-
-/obj/item/storage/box/explosives/populate_contents()
-	new /obj/item/grenade/syndieminibomb/generic(src)
-	new /obj/item/grenade/syndieminibomb/generic(src)
-	new /obj/item/grenade/gas/plasma(src)
-	new /obj/item/grenade/gas/plasma(src)
-	new /obj/item/grenade/empgrenade(src)
-	new /obj/item/grenade/empgrenade(src)
-	new /obj/item/grenade/frag(src)
-
 /obj/item/storage/box/breaching
 	name = "breaching charges"
 	desc = "Contains three T4 thermal breaching charges."
