@@ -57,11 +57,14 @@ GLOBAL_VAR_INIT(ert_request_answered, FALSE)
 
 	return 1
 
-/proc/trigger_armed_response_team(datum/response_team/response_team_type, commander_slots, security_slots, medical_slots, engineering_slots, janitor_slots, paranormal_slots, cyborg_slots, nuke_code)
+/proc/trigger_armed_response_team(datum/response_team/response_team_type, commander_slots, security_slots, medical_slots, engineering_slots, janitor_slots, paranormal_slots, cyborg_slots, nuke_code, announce_team, admin_pick, dispatching_admin)
 	GLOB.response_team_members = list()
 	GLOB.active_team = response_team_type
 	GLOB.active_team.setSlots(commander_slots, security_slots, medical_slots, engineering_slots, janitor_slots, paranormal_slots, cyborg_slots)
 	GLOB.active_team.nuke_code = nuke_code
+	GLOB.active_team.announce_team = announce_team
+	GLOB.active_team.admin_pick = admin_pick
+	GLOB.active_team.dispatching_admin = dispatching_admin
 
 	GLOB.send_emergency_team = TRUE
 	var/list/ert_candidates = shuffle(SSghost_spawns.poll_candidates("Join the Emergency Response Team?",, GLOB.responseteam_age, 60 SECONDS, TRUE, GLOB.role_playtime_requirements[ROLE_ERT]))
@@ -102,6 +105,8 @@ GLOBAL_VAR_INIT(ert_request_answered, FALSE)
 /proc/dispatch_response_team(list/response_team_members, list/datum/async_input/ert_gender_prefs, list/datum/async_input/ert_role_prefs)
 	var/spawn_index = 1
 
+	to_chat(get_mob_by_ckey(GLOB.active_team.dispatching_admin), "test")
+
 	for(var/i = 1, i <= response_team_members.len, i++)
 		if(spawn_index > GLOB.emergencyresponseteamspawn.len)
 			break
@@ -128,11 +133,12 @@ GLOBAL_VAR_INIT(ert_request_answered, FALSE)
 				break
 	GLOB.send_emergency_team = FALSE
 
-	if(GLOB.active_team.count)
+	if(GLOB.active_team.count && GLOB.active_team.announce_team)
 		GLOB.active_team.announce_team()
 		return
 	// Everyone who said yes was afk
-	GLOB.active_team.cannot_send_team()
+	if(GLOB.active_team.announce_team)
+		GLOB.active_team.cannot_send_team()
 
 /client/proc/create_response_team(new_gender, role, turf/spawn_location)
 	if(role == "Cyborg")
@@ -216,6 +222,9 @@ GLOBAL_VAR_INIT(ert_request_answered, FALSE)
 	var/paranormal_outfit
 	var/borg_path = /mob/living/silicon/robot/ert
 	var/nuke_code
+	var/announce_team
+	var/admin_pick
+	var/dispatching_admin
 
 /datum/response_team/proc/setSlots(com=1, sec=4, med=0, eng=0, jan=0, par=0, cyb=0)
 	slots["Commander"] = com
@@ -315,11 +324,8 @@ GLOBAL_VAR_INIT(ert_request_answered, FALSE)
 	command_outfit = /datum/outfit/job/centcom/response_team/death_commando/commander
 	borg_path = /mob/living/silicon/robot/deathsquad/
 
-/datum/response_team/epsilon/cannot_send_team()
-	return // Death waits. The pale rider does not announce its presence
-
 /datum/response_team/epsilon/announce_team()
-	return // Death comes. The pale rider does not announce its presence
+	GLOB.event_announcement.Announce("Attention, [station_name()]. We are sending a code EPSILON Emergency Response Team. Standby.", "ERT En-Route")
 
 // -- Sol Gov --
 

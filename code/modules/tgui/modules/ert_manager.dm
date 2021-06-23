@@ -9,11 +9,15 @@
 	var/paranormal_slots = 0
 	var/cyborg_slots = 0
 	var/nuke_code = FALSE
+	var/announce_team = TRUE
+	var/admin_pick = FALSE
+	var/dispatching_admin
 
 /datum/ui_module/ert_manager/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.admin_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+	dispatching_admin = user.ckey
 	if(!ui)
-		ui = new(user, src, ui_key, "ERTManager", name, 350, 480, master_ui, state)
+		ui = new(user, src, ui_key, "ERTManager", name, 350, 530, master_ui, state)
 		ui.autoupdate = TRUE
 		ui.open()
 
@@ -38,6 +42,8 @@
 	data["par"] = paranormal_slots
 	data["cyb"] = cyborg_slots
 	data["nuke_code"] = nuke_code
+	data["announce_team"] = announce_team
+	data["admin_pick"] = admin_pick
 	data["total"] = commander_slots + security_slots + medical_slots + engineering_slots + janitor_slots + paranormal_slots + cyborg_slots
 	data["spawnpoints"] = GLOB.emergencyresponseteamspawn.len
 	return data
@@ -53,13 +59,10 @@
 				janitor_slots = 0
 				paranormal_slots = 0
 				nuke_code = TRUE
-			else if(params["ert_type"] == "Sol Gov")
-				janitor_slots = 0
-				paranormal_slots = 0
-				cyborg_slots = 0
-				nuke_code = FALSE
+				announce_team = FALSE
 			else
 				nuke_code = FALSE
+				announce_team = TRUE
 			ert_type = params["ert_type"]
 		if("toggle_com")
 			commander_slots = commander_slots ? 0 : 1
@@ -77,6 +80,10 @@
 			cyborg_slots = text2num(params["set_cyb"])
 		if("toggle_nuke_code")
 			nuke_code = !nuke_code
+		if("toggle_announcement")
+			announce_team = !announce_team
+		if("toggle_admin_pick")
+			admin_pick = !admin_pick
 		if("dispatch_ert")
 			var/datum/response_team/D
 			switch(ert_type)
@@ -113,9 +120,9 @@
 			notify_ghosts("An ERT is being dispatched. Open positions: [slot_text]")
 			message_admins("[key_name_admin(usr)] dispatched a [ert_type] ERT. Slots: [slot_text]", 1)
 			log_admin("[key_name(usr)] dispatched a [ert_type] ERT. Slots: [slot_text]")
-			if(ert_type != "Epsilon")
+			if(announce_team)
 				GLOB.event_announcement.Announce("Attention, [station_name()]. We are attempting to assemble an ERT. Standby.", "ERT Protocol Activated")
-			trigger_armed_response_team(D, commander_slots, security_slots, medical_slots, engineering_slots, janitor_slots, paranormal_slots, cyborg_slots, nuke_code)
+			trigger_armed_response_team(D, commander_slots, security_slots, medical_slots, engineering_slots, janitor_slots, paranormal_slots, cyborg_slots, nuke_code, announce_team, admin_pick, dispatching_admin)
 		else
 			return FALSE
 

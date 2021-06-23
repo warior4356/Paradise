@@ -411,7 +411,7 @@
 		menu_state=value
 
 /proc/call_shuttle_proc(mob/user, reason)
-	if(GLOB.sent_strike_team == 1)
+	if(GLOB.security_level == SEC_LEVEL_EPSILON)
 		to_chat(user, "<span class='warning'>Central Command will not allow the shuttle to be called. Consider all contracts terminated.</span>")
 		return
 
@@ -440,7 +440,7 @@
 			to_chat(user, "Central Command does not currently have a shuttle available in your sector. Please try again later.")
 			return
 
-		if(GLOB.sent_strike_team == 1)
+		if(GLOB.security_level == SEC_LEVEL_EPSILON)
 			to_chat(user, "Central Command will not allow the shuttle to be called. Consider all contracts terminated.")
 			return
 

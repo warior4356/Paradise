@@ -261,12 +261,6 @@
 		R.name = "radio headset"
 		R.icon_state = "headset"
 
-/datum/outfit/admin/death_commando
-	name = "NT Death Commando"
-
-/datum/outfit/admin/death_commando/equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	return H.equip_death_commando()
-
 /datum/outfit/admin/pirate
 	name = "Space Pirate"
 
