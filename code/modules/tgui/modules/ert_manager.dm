@@ -95,8 +95,6 @@
 					D = new /datum/response_team/gamma
 				if("Epsilon")
 					D = new /datum/response_team/epsilon
-				if("Sol Gov")
-					D = new /datum/response_team/sol_gov
 				else
 					to_chat(usr, "<span class='userdanger'>Invalid ERT type.</span>")
 					return

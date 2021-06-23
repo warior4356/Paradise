@@ -104,8 +104,8 @@ GLOBAL_VAR_INIT(ert_request_answered, FALSE)
 
 /proc/dispatch_response_team(list/response_team_members, list/datum/async_input/ert_gender_prefs, list/datum/async_input/ert_role_prefs)
 	var/spawn_index = 1
-
-	to_chat(get_mob_by_ckey(GLOB.active_team.dispatching_admin), "test")
+	if(GLOB.active_team.admin_pick)
+		to_chat(get_mob_by_ckey(GLOB.active_team.dispatching_admin), "test")
 
 	for(var/i = 1, i <= response_team_members.len, i++)
 		if(spawn_index > GLOB.emergencyresponseteamspawn.len)

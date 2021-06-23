@@ -2336,7 +2336,6 @@
 #include "code\modules\response_team\death_commando_outfits.dm"
 #include "code\modules\response_team\ert.dm"
 #include "code\modules\response_team\ert_outfits.dm"
-#include "code\modules\response_team\sol_gov_outfits.dm"
 #include "code\modules\ruins\ruin_areas.dm"
 #include "code\modules\ruins\syndicate_space_base.dm"
 #include "code\modules\ruins\lavalandruin_code\animal_hospital.dm"

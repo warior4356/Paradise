@@ -275,6 +275,16 @@
 	materials = list(MAT_METAL = 2000, MAT_SILVER = 1500, MAT_PLASMA = 500, MAT_TITANIUM = 1500)
 	category = list("Medical")
 
+/datum/design/holostretcher
+	name = "Holo Strecher"
+	desc = "A hardlight projector for transporting patients."
+	id = "holo_stretcher"
+	req_tech = list("biotech" = 5, "magnets" = 4, "powerstorage" = 4)
+	build_path = /obj/item/roller/holo
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 1000, MAT_SILVER = 500, MAT_GLASS = 500, MAT_DIAMOND = 200)
+	category = list("Medical")
+
 /////////////////////////////////////////
 //////////Cybernetic Implants////////////
 /////////////////////////////////////////

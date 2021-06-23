@@ -334,7 +334,7 @@
 		/obj/item/storage/firstaid/adv = 1,
 		/obj/item/storage/firstaid/regular = 1,
 		/obj/item/storage/box/autoinjectors = 1,
-		/obj/item/roller = 1,
+		/obj/item/roller/holo = 1,
 		/obj/item/storage/pill_bottle/ert = 1,
 		/obj/item/flashlight = 1,
 		/obj/item/healthupgrade = 1,
@@ -364,7 +364,7 @@
 		/obj/item/storage/firstaid/brute = 1,
 		/obj/item/storage/firstaid/fire = 1,
 		/obj/item/storage/box/autoinjectors = 1,
-		/obj/item/roller = 1,
+		/obj/item/roller/holo = 1,
 		/obj/item/clothing/shoes/magboots = 1,
 		/obj/item/bodyanalyzer = 1,
 		/obj/item/healthupgrade = 1,
@@ -393,7 +393,7 @@
 	backpack_contents = list(
 		/obj/item/bodyanalyzer/advanced = 1,
 		/obj/item/extinguisher/mini = 1,
-		/obj/item/roller = 1,
+		/obj/item/roller/holo = 1,
 		/obj/item/healthanalyzer/advanced = 1,
 		/obj/item/handheld_defibrillator = 1,
 		/obj/item/storage/pill_bottle/painkillers = 1
